@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+
+</head>
+<body>
+
+<header>
+<div class="container-fluid text-center" class="img">
+
+</div>
+
+    <nav class="navbar navbar-expand-lg navbar-light bg-light mt-5">
+  <div class="container-fluid">
+      <img src="{%static 'images/logo5.png' %}" alt="Avatar" height="75px" width="75px">
+    <a class="navbar-brand fs-3 fw-bold" href="#">My Shop</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="{% url 'shop:categories' %}">Home</a>
+        </li>
+          <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+
+
+              All Categories
+          </a>
+          <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+              {% for i in links %}
+            <li><a class="dropdown-item" href="{% url 'shop:products' i.id %}">{{i.name}}</a></li>
+              {% endfor %}
+
+
+          </ul>
+        </li>
+          {% if user.is_authenticated %}
+          {% if user.is_superuser == False %}
+
+          <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="{% url 'cart:cartview' %}"><i class="fa-solid fa-cart-shopping mx-1 " ></i><sup class="mx-2 fs-7">{{c}}</sup></a>
+        </li>
+          <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="{% url 'cart:vieworders' %}">Your Orders</a>
+        </li>
+          {% else %}
+
+          <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="{% url 'shop:addproduct' %}">Add Products</a>
+        </li>
+          <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="{% url 'shop:addcategory' %}">Add Categories</a>
+        </li>
+
+          {% endif %}
+           <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="{% url 'shop:logout' %}">Logout</a>
+        </li>
+          {% else %}
+          <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="{% url 'shop:register' %}">Register</a>
+        </li>
+          <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="{% url 'shop:login' %}">Login</a>
+
+
+          {% endif %}
+
+
+      </ul>
+      <form class="d-flex" method="post" action="{% url 'search:search' %}">
+          {% csrf_token %}
+        <input class="form-control me-2 border border-dark" type="search" name="q" placeholder="Search" aria-label="Search">
+        <button class="btn btn-outline-dark" type="submit">Search</button>
+      </form>
+    </div>
+  </div>
+</nav>
+
+{% block content %}
+
+  {% endblock %}
+
+    <!-- Remove the container if you want to extend the Footer to full width. -->
+<div class="container my-5 " >
+
+
+
+</header>
+ <footer class="bg-dark text-center text-white" >
+  <!-- Grid container -->
+  <div class="container p-3 pb-0">
+    <!-- Section: Social media -->
+    <section class="mb-2">
+      <!-- Facebook -->
+<!--      <a class="btn btn-outline-light btn-floating m-1" href="#!" role="button"-->
+<!--        ><i class="fab fa-facebook-f"></i-->
+<!--      ></a>-->
+
+<!--      &lt;!&ndash; Twitter &ndash;&gt;-->
+<!--      <a class="btn btn-outline-light btn-floating m-1" href="#!" role="button"-->
+<!--        ><i class="fab fa-twitter"></i-->
+<!--      ></a>-->
+
+<!--      &lt;!&ndash; Google &ndash;&gt;-->
+<!--      <a class="btn btn-outline-light btn-floating m-1" href="#!" role="button"-->
+<!--        ><i class="fab fa-google"></i-->
+<!--      ></a>-->
+
+<!--      &lt;!&ndash; Instagram &ndash;&gt;-->
+<!--      <a class="btn btn-outline-light btn-floating m-1" href="#!" role="button"-->
+<!--        ><i class="fab fa-instagram"></i-->
+<!--      ></a>-->
+
+<!--      &lt;!&ndash; Linkedin &ndash;&gt;-->
+<!--      <a class="btn btn-outline-light btn-floating m-1" href="#!" role="button"-->
+<!--        ><i class="fab fa-linkedin-in"></i-->
+<!--      ></a>-->
+
+      <!-- Github -->
+<!--      <a class="btn btn-outline-light btn-floating m-1" href="#!" role="button"-->
+<!--        ><i class="fab fa-github"></i></a>-->
+    </section>
+    <!-- Section: Social media -->
+  </div>
+  <!-- Grid container -->
+
+  <!-- Copyright -->
+  <div class="text-center p-3" style="background-color: rgb(2,0,36);">
+    © 2020 Copyright:
+    <p class="text-center "><i class="fa fa-copyright me-2" aria-hidden="true" style="background-color: rgb(2,0,36);">myshop@pvt.ltd</i></p>
+
+  </div>
+  <!-- Copyright -->
+</footer>
+
+</div>
+<!-- End of .container -->
+
+</body>
+</html>

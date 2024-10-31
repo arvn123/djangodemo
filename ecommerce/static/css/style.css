@@ -1,0 +1,97 @@
+body
+{
+background: rgb(6,104,112);
+background: linear-gradient(90deg, rgba(6,104,112,0.7372198879551821) 47%, rgba(9,95,109,1) 91%);
+}
+
+
+.footer
+{
+position:fixed;
+bottom:0;
+left:0;
+background-color:white;
+height:20px;
+width:100%;
+
+}
+
+.img
+{
+  border-radius: 50%;
+}
+
+/* Compact and Beautiful Navbar Design */
+.navbar {
+    background: linear-gradient(90deg, #00d2ff, #3a7bd5); /* Gradient background */
+    padding-top: 5px;
+    padding-bottom: 5px;
+    height: 70px; /* Reduced minimum height */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+    transition: background 0.3s ease;
+    border-radius:16px;
+}
+
+.navbar-brand {
+    font-size: 1.6rem; /* Slightly smaller brand text */
+    font-weight: bold;
+    color: #fff; /* White text for the brand */
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.navbar-nav .nav-link {
+    color: #fff !important; /* White text for nav links */
+    margin-right: 10px; /* Reduced margin for compactness */
+    font-size: 1rem; /* Reduced font size */
+    transition: color 0.3s ease;
+}
+
+.navbar-nav .nav-link:hover {
+    color: #ffeb3b !important; /* Yellow on hover */
+}
+
+.navbar-toggler {
+    border: none;
+    background: rgba(255, 255, 255, 0.2); /* Transparent toggler button */
+}
+
+.navbar-toggler-icon {
+    color: #fff; /* White icon for the toggler */
+}
+
+.dropdown-menu {
+    background-color: rgba(255, 255, 255, 0.9); /* Semi-transparent dropdown */
+    border-radius: 5px;
+}
+
+.dropdown-item {
+    color: #333;
+}
+
+.dropdown-item:hover {
+    background-color: #00d2ff; /* Highlight dropdown on hover */
+    color: #fff;
+}
+
+.form-control {
+    border-radius: 30px; /* Rounded search bar */
+    border: 2px solid #fff; /* White border for the search bar */
+    transition: border 0.3s ease;
+}
+
+.form-control:focus {
+    border-color: #ffeb3b; /* Yellow border on focus */
+}
+
+.btn-outline-dark {
+    color: #fff; /* White text for search button */
+    border-color: #fff;
+}
+
+.btn-outline-dark:hover {
+    background-color: #ffeb3b; /* Yellow background on hover */
+    color: #333; /* Dark text on hover */
+}
+
+

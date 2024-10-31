@@ -1,0 +1,61 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Login{% endblock %}
+
+{% block content %}
+<form method="POST">
+<div class="row justify-content-center">
+  <div class="col-md-6">
+    <div class="card shadow-lg">
+      <div class="card-body">
+        <h2 class="card-title text-center mb-4">Login</h2>
+
+
+          {% csrf_token %}
+
+          <!-- Username -->
+          <div class="mb-3">
+            <label for="username" class="form-label">Username</label>
+            <div class="input-group">
+              <span class="input-group-text"><i class="fas fa-user"></i></span>
+              <input type="text" class="form-control" id="username" name="u" placeholder="Enter your username" required>
+            </div>
+          </div>
+
+          <!-- Password -->
+          <div class="mb-3">
+            <label for="password" class="form-label">Password</label>
+            <div class="input-group">
+              <span class="input-group-text"><i class="fas fa-lock"></i></span>
+              <input type="password" class="form-control" id="password" name="p" placeholder="Enter your password" required>
+            </div>
+          </div>
+
+          <!-- Submit Button -->
+          <div class="d-grid">
+            <button type="submit" class="btn btn-primary btn-lg">Login</button>
+          </div>
+
+<!--           Optional: Forgot Password Link-->
+          <div class="mt-3 text-center">
+            <a href="">Forgot your password?</a>
+          </div>
+
+        </form>
+         <!-- Display Messages -->
+        {% if messages %}
+        <ul class="message text-danger fs-4 text-capitalize">
+          {% for message in messages %}
+        <li>{{ message }}</li>
+
+          {% endfor %}
+        </ul>
+        {% endif %}
+
+        <form method="POST" novalidate>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

@@ -1,0 +1,102 @@
+{% extends 'base.html' %}
+
+{% load static %}
+{% block content %}
+<style>
+    /* Styling for the main banner image */
+    .banner-image {
+        border-radius: 10px;
+        overflow: hidden;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    }
+
+    /* Style the "Our Collections" title */
+    h3.text-center.fw-bold.text-light.mb-5.mt-t {
+        color: #333;
+        font-family: 'Arial', sans-serif;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        padding: 10px;
+        border-bottom: 2px solid #555;
+    }
+
+    /* Container and row styling */
+    .container.mt-5.mb-5 {
+        padding: 20px;
+        background-color: #f9f9f9;
+        border-radius: 15px;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    }
+
+    /* Styling for the category cards */
+    .card {
+        border: none;
+        border-radius: 12px;
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        overflow: hidden;
+    }
+
+    .card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    }
+
+    .card img {
+        border-top-left-radius: 12px;
+        border-top-right-radius: 12px;
+        transition: transform 0.3s ease;
+    }
+
+    .card:hover img {
+        transform: scale(1.05);
+    }
+
+    .card-title {
+        font-weight: bold;
+        font-size: 1.25rem;
+        color: #333;
+    }
+
+    .btn-secondary {
+        background-color: #6c757d;
+        border: none;
+        transition: background-color 0.3s ease, transform 0.3s ease;
+    }
+
+    .btn-secondary:hover {
+        background-color: #5a6268;
+        transform: scale(1.05);
+    }
+</style>
+
+<div class="row mt-1">
+    <div class="col-12">
+        <img src="{% static 'images/banner4.jpg' %}" height="500px" width="100%" class="banner-image">
+    </div>
+</div>
+
+<div class="row mt-3" style="margin-bottom:100px">
+    <div class="col-12">
+        <h3 class="text-center fw-bold text-light mb-5 mt-t">Our Collections</h3>
+        <p style="text-align:justify; line-height:2;"></p>
+    </div>
+</div>
+
+<div class="container mt-5 mb-5">
+    <div class="row">
+        {% for i in cat %}
+        <div class="col-sm-4">
+            <div class="card mx-auto" style="width: 20rem;">
+                <img src="{{ i.image.url }}" class="card-img-top" alt="..." height="200px" width="100%">
+                <div class="card-body text-center">
+                    <h5 class="card-title">{{ i.name }}</h5>
+                    <p class="card-text"></p>
+                    <a href="{% url 'shop:products' i.id %}" class="btn btn-secondary px-5 mb-2 fs-5">Products</a>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}
